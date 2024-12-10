@@ -1,5 +1,5 @@
 def call() {
-    stage('Cred-scanning') {
+    stage('Time_out') {
           sh 'sleep(30)'
     }
 }
