@@ -1,5 +1,5 @@
 def call() {
-    stage('Clone Repository') {
+    stage('Clone_repo') {
         git branch: 'main', url: 'https://github.com/OT-MICROSERVICES/salary-api.git'
     }
 }
