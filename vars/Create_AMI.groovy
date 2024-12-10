@@ -1,5 +1,5 @@
 def call() {
-    stage('Launch Instance') {
+    stage('AMI_creation') {
         script {
             sh '''
                 # Read the Instance ID from the file
