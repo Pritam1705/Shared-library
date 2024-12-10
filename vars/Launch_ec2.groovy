@@ -1,5 +1,5 @@
 def call() {
-    stage('Launch Instance') {
+   
         script {
             sh '''
                 aws ec2 run-instances --region ap-south-1 --image-id ami-053b12d3152c0cc71 \
@@ -12,5 +12,5 @@ def call() {
                 echo $INSTANCE_ID > instance_id.txt
             '''
         }
-    }
+    
 }
