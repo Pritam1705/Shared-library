@@ -1,6 +1,6 @@
 def call() {
-    stage('AMI_creation') {
-        script {
+   
+       
             sh '''
                 # Read the Instance ID from the file
                 INSTANCE_ID=$(cat instance_id.txt)
@@ -14,6 +14,6 @@ def call() {
                 # Save the AMI ID to a file
                 echo $AMI_ID > ami_id.txt
             '''
-        }
-    }
+        
+    
 }
