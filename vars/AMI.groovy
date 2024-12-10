@@ -3,11 +3,11 @@ def call() {
         steps {
             sh '''
                 # Launch the EC2 instance
-                aws ec2 run-instances --region "${region}" --image-id "${AMI_ID}" \
-                    --instance-type "${instance_type}" \
-                    --key-name "${key_name}"  \
-                    --security-group-ids "${sg_id}" \
-                    --subnet-id "${subnet_id}"  > instance_info.json
+                aws ec2 run-instances --region ap-south-1 --image-id ami-053b12d3152c0cc71 \
+                    --instance-type t2.micro \
+                    --key-name jenkins \
+                    --security-group-ids sg-072642f94d7118f38 \
+                    --subnet-id subnet-0c7dc48384c529638  > instance_info.json
                 
                 # Extract the Instance ID
                 INSTANCE_ID=$(jq -r '.Instances[0].InstanceId' instance_info.json)
@@ -32,8 +32,8 @@ def call() {
                 INSTANCE_ID=$(cat instance_id.txt)
                 
                 # Create a new AMI from the instance
-                AMI_ID=$(aws ec2 create-image --region "${region}" --instance-id $INSTANCE_ID \
-                    --name "${AMI_NAME}" \
+                AMI_ID=$(aws ec2 create-image --region ap-south-1 --instance-id $INSTANCE_ID \
+                    --name MyCustomAMI \
                     --description "Custom AMI created via Jenkins" \
                     --no-reboot --output text)
                 
