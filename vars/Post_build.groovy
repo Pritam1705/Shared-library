@@ -1,15 +1,7 @@
 def call() {
-    
-         post {
-        success {
-            slackSend(channel: '#jenkinnotify', message: "Build SUCCESS: ${env.JOB_NAME} #${env.BUILD_NUMBER} (${branchName})", color: "good")
-        }
-        failure {
-            slackSend(channel: '#jenkinnotify', message: "Build FAILURE: ${env.JOB_NAME} #${env.BUILD_NUMBER} (${branchName})", color: "danger")
-        }
-        always {
-            echo "Build finished: ${currentBuild.currentResult}"
-        }
-     }
-    
+     slackSend(
+        channel: '#jenkinnotify',
+        message: "Find Status of Pipeline: ${currentBuild.currentResult} ${env.JOB_NAME} ${env.BUILD_NUMBER} ${BUILD_URL}"
+    )
 }
+
