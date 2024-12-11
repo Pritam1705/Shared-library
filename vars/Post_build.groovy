@@ -1,5 +1,5 @@
 def call() {
-    stage('Cred-scanning') {
+    
          post {
         success {
             slackSend(channel: '#jenkinnotify', message: "Build SUCCESS: ${env.JOB_NAME} #${env.BUILD_NUMBER} (${branchName})", color: "good")
@@ -11,5 +11,5 @@ def call() {
             echo "Build finished: ${currentBuild.currentResult}"
         }
      }
-    }
+    
 }
