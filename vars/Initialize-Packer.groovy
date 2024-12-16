@@ -1,8 +1,5 @@
 def call() {
-   
-       
-            sh '''
-               withCredentials([[$class: 'AmazonWebServicesCredentialsBinding', credentialsId: "${awsCredentialsId}"]]) {
+    withCredentials([[$class: 'AmazonWebServicesCredentialsBinding', credentialsId: "${awsCredentialsId}"]]) {
                         writeFile file: 'packer-config.pkr.hcl', text: '''
 packer {
   required_plugins {
@@ -13,8 +10,6 @@ packer {
   }
 }
 '''
-                        sh "packer init ."
-            '''
-        
-    
+    sh "packer init ."
+   
 }
